@@ -3,10 +3,74 @@
 @tailwind utilities;
 
 :root {
+  /* Default text color (Light Gray) */
   --foreground-rgb: 226, 232, 240;
+  
+  /* Deep Forest Background Base */
+  --background-start-rgb: 5, 10, 5;
+  --background-end-rgb: 5, 10, 5;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #050a05;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  background-color: #050a05; /* Fallback */
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-feature-settings: "rlig" 1, "calt" 1; /* Better font rendering */
+}
+
+/* =========================================
+   Custom Scrollbar (Cyber/Modern Look)
+   ========================================= */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050a05;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a261a;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4ADE80; /* Neon Green on hover */
+}
+
+/* =========================================
+   Utility Classes
+   ========================================= */
+
+/* Glass effect used on cards */
+.glass {
+  background: rgba(13, 20, 13, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Text Selection Color (Neon Green) */
+::selection {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ADE80;
+}
+
+/* Recharts Tooltip Customization Override */
+.recharts-tooltip-cursor {
+  stroke: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
