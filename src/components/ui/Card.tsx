@@ -2,12 +2,13 @@
 
 import { cn } from "@/lib/utils";
 import { motion, HTMLMotionProps } from "framer-motion";
+import React from "react";
 
-// FIX: Extend HTMLMotionProps instead of React.HTMLAttributes
-// This ensures compatibility with <motion.div>
 interface CardProps extends HTMLMotionProps<"div"> {
   noHover?: boolean;
   delay?: number;
+  // We explicitly type children as ReactNode to fix the Framer Motion type conflict
+  children?: React.ReactNode; 
 }
 
 export function Card({ className, children, noHover, delay = 0, ...props }: CardProps) {
